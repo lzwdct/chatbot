@@ -1,0 +1,46 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model menu {
+  idmenu    Int         @default(autoincrement()) @id
+  menu_name String      @default("")
+  shop_menu shop_menu[]
+}
+
+model search_sentence {
+  date_time DateTime?
+  id        Int       @default(autoincrement()) @id
+  sentence  String?
+}
+
+model shop {
+  idshop     Int         @default(autoincrement()) @id
+  shop_addr  String?
+  shop_name  String?
+  shop_order Int?        @default(5)
+  shop_phone String?
+  shop_menu  shop_menu[]
+}
+
+model shop_menu {
+  id      Int  @default(autoincrement()) @id
+  menu_id Int
+  shop_id Int
+  menu    menu @relation(fields: [menu_id], references: [idmenu])
+  shop    shop @relation(fields: [shop_id], references: [idshop])
+
+  @@index([menu_id], name: "FK_MENU")
+  @@index([shop_id], name: "FK_SHOP")
+}
+
+model User {
+  id       Int     @default(autoincrement()) @id
+  password String?
+  username String?
+}
