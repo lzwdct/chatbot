@@ -4,10 +4,10 @@ const { Chatbot } = require('./src/chatbot');
 const { Log } = require('./src/log');
 const { Thumbnail } = require('./src/thumbnail');
 
-module.exports.chatbot = async (event, ctx) => {
-    //const request = JSON.parse(event.body);
-    //const content = request["userRequest"]["utterance"];
-    const content = '@비빔냉면';
+module.exports.chatbot = async (event, context) => {
+    const request = JSON.parse(event.body);
+    const content = request["userRequest"]["utterance"];
+    //const content = '@비빔냉면';
 
     const chatbot = new Chatbot();
     const saveLog = new Log();
@@ -52,7 +52,7 @@ module.exports.chatbot = async (event, ctx) => {
             "outputs": [simpleText]
         }
     }
-    ctx.callbackWaitsForEmptyEventLoop = false;
+    context.callbackWaitsForEmptyEventLoop = false
     return {
         statusCode: 200,
         body: JSON.stringify(response)

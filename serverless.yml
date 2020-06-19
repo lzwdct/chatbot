@@ -63,7 +63,28 @@ functions:
     events:
       - http:
           path: chatbot
-          method: get
+          method: post
+          cors: true
+  graphql:
+    handler: graphql.graphqlHandler
+    events:
+      - http:
+          path: graphql
+          method: post
+          cors:
+            origins:
+                - '*'
+            headers:
+                - Content-Type
+                - X-Amz-Date
+                - Authorization
+                - X-Api-Key
+                - X-Amz-Security-Token
+            allowCredentials: false  
+#      - http:
+#          path: graphql
+#          method: get
+#          cors: true
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

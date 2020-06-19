@@ -5,6 +5,30 @@ const { shuffleArray } = require('../util');
 class Chatbot{
     async chat(content){
         const words = content.split(" ");
+
+        const [menu] = await Promise.all(words.map(async (word) => {
+            if(!(word.indexOf("@") > -1)){
+                const menuSearch = await this.getMenu(word);
+
+                if( menuSearch.length > 1){
+                    return this.getMultipleMenuList(menuSearch, 1);
+                }else if(menuSearch.length === 1){
+                    return this.getShopListSearchByMenuName(menuSearch[0].menu_name)
+                }
+            }else{
+                const newWord = word.replace('@','');
+                const shopList = await this.getShopListSearchByMenuName(newWord);
+
+                if(shopList.length){
+                    return await this.getMultipleShopDetail(shopList);
+                }
+            }
+        }));
+
+        if(menu){
+            return menu;
+        }
+
         const [shop] = await Promise.all(words.map(async (word) => {
             const data = await this.getShopByName(word);
 
@@ -34,29 +58,6 @@ class Chatbot{
             return shop;
         }
 
-        const [menu] = await Promise.all(words.map(async (word) => {
-            if(!(word.indexOf("@") > -1)){
-                const menuSearch = await this.getMenu(word);
-
-                if( menuSearch.length > 1){
-                    return this.getMultipleMenuList(menuSearch, 1);
-                }else if(menuSearch.length === 1){
-                    return this.getShopListSearchByMenuName(menuSearch[0].menu_name)
-                }
-            }else{
-                const newWord = word.replace('@','');
-                const shopList = await this.getShopListSearchByMenuName(newWord);
-
-                if(shopList.length){
-                    return await this.getMultipleShopDetail(shopList);
-                }
-            }
-        }));
-
-        if(menu){
-            return menu;
-        }
-
         return `식당 또는 메뉴가 검색되지 않았습니다.`;
         
     }
@@ -84,10 +85,10 @@ class Chatbot{
 
         result = shuffleArray(result);
         result = result.sort(function (a, b) {
-            return a.shop_order > b.shop_order ? 1 : -1;
+            return a.shop_order < b.shop_order ? 1 : -1;
         });
 
-        return result
+        return await result.map(item => item.shop_name);
     }
     async getMenuListByShopName(shop_name){
         const shops = await prisma.shop.findMany({
@@ -115,7 +116,7 @@ class Chatbot{
 			return menus[0].menu_name
         }))
         
-        return result.join("\n");
+        return `${shop_name} 의 메뉴\n` + result.join("\n");
         
     }
     async getShopByName(item){
