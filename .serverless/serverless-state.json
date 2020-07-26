@@ -218,7 +218,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/chatbot/dev/1592541203406-2020-06-19T04:33:23.406Z/chatbot.zip"
+                "S3Key": "serverless/chatbot/dev/1595759531981-2020-07-26T10:32:11.981Z/chatbot.zip"
               },
               "FunctionName": "chatbot-dev-chatbot",
               "Handler": "s_chatbot.handler",
@@ -236,14 +236,14 @@
               "ChatbotLogGroup"
             ]
           },
-          "ChatbotLambdaVersionUiUGhxgQlKmBdHor03SvhzZJqYq6poDEyIQG7mrQ": {
+          "ChatbotLambdaVersionrYT7VEXMvzyXekP2OG62GBrQfMQRninEqlKMCL6Csk": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ChatbotLambdaFunction"
               },
-              "CodeSha256": "JtPzXH44IJCexq9rRtUqKezD7GnPCvQyFqF92AbnquM="
+              "CodeSha256": "ySMAqnGL0tUj9CL6dAs8FIuZLcuxSpda/5hx1JVQuTM="
             }
           },
           "GraphqlLambdaFunction": {
@@ -253,7 +253,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/chatbot/dev/1592541203406-2020-06-19T04:33:23.406Z/chatbot.zip"
+                "S3Key": "serverless/chatbot/dev/1595759531981-2020-07-26T10:32:11.981Z/chatbot.zip"
               },
               "FunctionName": "chatbot-dev-graphql",
               "Handler": "s_graphql.handler",
@@ -271,14 +271,14 @@
               "GraphqlLogGroup"
             ]
           },
-          "GraphqlLambdaVersionHhrwkpWX98QJtbGfHGnyBtqygGDoSwfGx6unLTXQpk": {
+          "GraphqlLambdaVersionc2RoBAuZ1farM92cIepwqjNKBTjg13bbqZUI6RxYqf4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GraphqlLambdaFunction"
               },
-              "CodeSha256": "JtPzXH44IJCexq9rRtUqKezD7GnPCvQyFqF92AbnquM="
+              "CodeSha256": "ySMAqnGL0tUj9CL6dAs8FIuZLcuxSpda/5hx1JVQuTM="
             }
           },
           "ApiGatewayRestApi": {
@@ -499,7 +499,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1592541161518": {
+          "ApiGatewayDeployment1595759491645": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -697,7 +697,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/chatbot/dev/1592541203406-2020-06-19T04:33:23.406Z/custom-resources.zip"
+                "S3Key": "serverless/chatbot/dev/1595759531981-2020-07-26T10:32:11.981Z/custom-resources.zip"
               },
               "FunctionName": "chatbot-dev-custom-resource-apigw-cw-role",
               "Handler": "apiGatewayCloudWatchRole/handler.handler",
@@ -763,13 +763,13 @@
           "ChatbotLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ChatbotLambdaVersionUiUGhxgQlKmBdHor03SvhzZJqYq6poDEyIQG7mrQ"
+              "Ref": "ChatbotLambdaVersionrYT7VEXMvzyXekP2OG62GBrQfMQRninEqlKMCL6Csk"
             }
           },
           "GraphqlLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GraphqlLambdaVersionHhrwkpWX98QJtbGfHGnyBtqygGDoSwfGx6unLTXQpk"
+              "Ref": "GraphqlLambdaVersionc2RoBAuZ1farM92cIepwqjNKBTjg13bbqZUI6RxYqf4"
             }
           },
           "ServiceEndpoint": {
@@ -912,7 +912,7 @@
         "timeout": 6,
         "runtime": "nodejs10.x",
         "vpc": {},
-        "versionLogicalId": "ChatbotLambdaVersionUiUGhxgQlKmBdHor03SvhzZJqYq6poDEyIQG7mrQ"
+        "versionLogicalId": "ChatbotLambdaVersionrYT7VEXMvzyXekP2OG62GBrQfMQRninEqlKMCL6Csk"
       },
       "graphql": {
         "handler": "s_graphql.handler",
@@ -948,7 +948,7 @@
         "timeout": 6,
         "runtime": "nodejs10.x",
         "vpc": {},
-        "versionLogicalId": "GraphqlLambdaVersionHhrwkpWX98QJtbGfHGnyBtqygGDoSwfGx6unLTXQpk"
+        "versionLogicalId": "GraphqlLambdaVersionc2RoBAuZ1farM92cIepwqjNKBTjg13bbqZUI6RxYqf4"
       }
     },
     "serviceFilename": "serverless.yml",
@@ -962,7 +962,7 @@
     "artifact": "/Applications/Ampps/www/chatbot/.serverless/chatbot.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/chatbot/dev/1592541203406-2020-06-19T04:33:23.406Z",
+    "artifactDirectoryName": "serverless/chatbot/dev/1595759531981-2020-07-26T10:32:11.981Z",
     "artifact": "chatbot.zip"
   }
 }

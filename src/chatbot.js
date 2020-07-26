@@ -20,7 +20,9 @@ class Chatbot{
                 const shopList = await this.getShopListSearchByMenuName(newWord);
 
                 if(shopList.length){
-                    return await this.getMultipleShopDetail(shopList);
+                    const result = await this.getMultipleShopDetail(shopList);
+                    console.log('result', result)
+                    return result;
                 }
             }
         }));
@@ -142,7 +144,7 @@ class Chatbot{
         if(isMenu)
             return await shops.map(shop => shop.shop_name + ' 메뉴');
 
-        return await shops.map(shop => shop.shop_name);
+        return shops;
     }
     getMultipleMenuList(menus, returnType){
         if(returnType)
